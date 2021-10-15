@@ -19,31 +19,20 @@
     <body>
         <!-- Header -->
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">🅴   🆃🆄🅳🅾   🆂🅾🅱🆁🅴   🆅🅾🅲🅴</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post">Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contato</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% include 'header.html' %}
 
         <header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg')}})">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Blog - É tudo sobre Você</h1>
+                            <h1>É tudo sobre Você</h1>
                             <span class="subheading">Por Jéssica Milone</span>
+                            <h6 class="versiculo">Também no caminho dos teus juízos, Senhor, te esperamos;
+                                no teu nome e na tua memória está o desejo da nossa alma. Isaías 26:8</h6>
+                            <h6><a class="external-reference" target="_blank"
+                               href="https://www.bibliaonline.com.br/">biblia online</a>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -54,22 +43,23 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
-                    <div class="post-preview">
+                    <div class="post-preview" style="background-image: url({{ url_for('static', filename='img/posts/motivacao.png')}})">
                         <a href="post.html">
                             <h2 class="post-title">Pessoas Motivadas / Desmotivadas</h2>
-                            <h3 class="post-subtitle">Início de carreira é difícil mas carreira é recompensadora.</h3>
+                            <h3 class="post-subtitle">Lembre-se que Deus é o seu consolo, em meio a tanto problemas,
+                                por mais difícil que esteja.</h3>
                         </a>
                         <p class="post-meta">
                             Postado por
-                            <a href="#!">Cesar Milone</a>
-                            em Outubro 12, 2021
+                            <a href="#!">Jéssica Milone</a>
+                            em Outubro 15, 2021
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
+                        <a href="post.html"><h2 class="post-title">Porque Deus permite o sofrimento.</h2></a>
                         <p class="post-meta">
                             Posted by
                             <a href="#!">Start Bootstrap</a>

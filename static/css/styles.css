@@ -11205,7 +11205,11 @@ header.masthead .site-heading .h1 {
   padding: 0.625rem;
   text-align: center;
 }
-
+.post-preview {
+  padding: 2% 4%;
+  background-size: cover;
+  color: white;
+}
 .post-preview > a {
   color: #212529;
 }
@@ -11236,7 +11240,15 @@ header.masthead .site-heading .h1 {
     font-size: 2.25rem;
   }
 }
-
 .post-img {
     width: 75%;
+}
+.versiculo {
+    padding: 2% 2%;
+    font-family: var(--bs-font-monospace);
+    line-height: 1.5;
+}
+.external-reference{
+    font-size: 0.8rem;
+    color: white;
 }
