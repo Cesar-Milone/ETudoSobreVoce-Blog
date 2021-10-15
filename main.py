@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -21,6 +21,11 @@ def contact():
 @app.route("/post")
 def post():
     return render_template("post.html")
+
+
+@app.route("/random")
+def random_get():
+    return jsonify(header="Esse e o titulo", post="Esse e o post completo")
 
 
 if __name__ == "__main__":
