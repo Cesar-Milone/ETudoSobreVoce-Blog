@@ -28,8 +28,7 @@
                         <div class="site-heading">
                             <h1>É tudo sobre Você</h1>
                             <span class="subheading">Por Jéssica Milone</span>
-                            <h6 class="versiculo">Também no caminho dos teus juízos, Senhor, te esperamos;
-                                no teu nome e na tua memória está o desejo da nossa alma. Isaías 26:8</h6>
+                            <h6 class="versiculo">{{ bible }}</h6>
                             <h6><a class="external-reference" target="_blank"
                                href="https://www.bibliaonline.com.br/">biblia online</a>
                             </h6>
@@ -45,9 +44,8 @@
                     <!-- Post preview-->
                     <div class="post-preview" style="background-image: url({{ url_for('static', filename='img/posts/motivacao.png')}})">
                         <a href="post.html">
-                            <h2 class="post-title">Pessoas Motivadas / Desmotivadas</h2>
-                            <h3 class="post-subtitle">Lembre-se que Deus é o seu consolo, em meio a tanto problemas,
-                                por mais difícil que esteja.</h3>
+                            <h2 class="post-title"> {{ post_title }}</h2>
+                            <h3 class="post-subtitle">{{ post_subtitle }}</h3>
                         </a>
                         <p class="post-meta">
                             Postado por
@@ -66,38 +64,6 @@
                             on September 18, 2021
                         </p>
                     </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on August 24, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on July 8, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
                 </div>
             </div>
         </div>
