@@ -1,13 +1,13 @@
 from flask import Flask, render_template, jsonify
 import json
+from bible_api import Bible
 
 app = Flask(__name__)
+bible = Bible()
 
 with open("static/json_data.json", "r") as file:
     post_completed = json.load(file)
 
-bible = "Também no caminho dos teus juízos, Senhor, te esperamos;" \
-        " no teu nome e na tua memória está o desejo da nossa alma. Isaías 26:8"
 post_title = post_completed["0"]["post_title"]
 post_subtitle = post_completed["0"]["post_subtitle"]
 post_body = post_completed["0"]["post_body"]
@@ -15,7 +15,7 @@ post_body = post_completed["0"]["post_body"]
 
 @app.route("/")
 def index():
-    return render_template("index.html", bible=bible, post_title=post_title,
+    return render_template("index.html", bible=bible.text1, post_title=post_title,
                            post_subtitle=post_subtitle, post_body=post_body, post_completed=post_completed)
 
 
