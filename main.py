@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify
 import json
 from static.classes.bible_api import Bible
 from datetime import datetime
-from static.classes.db import Database
+#from static.classes.db import Database
 from random import randint
 
 app = Flask(__name__)

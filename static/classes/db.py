@@ -1,9 +1,31 @@
 import psycopg2
+db_param = {
+    "host": "ec2-52-203-164-61.compute-1.amazonaws.com",
+    "database": "daivv73ef4d94k",
+    "user": "ltsobhwjihxaha",
+    "port": 5432,
+    "password": "d8ad4d8bbb6b205a1fadaf70474b639e3caf50de4d2d33fcf3792c4f1b830dff",
+    "uri": "postgres://ltsobhwjihxaha:d8ad4d8bbb6b205a1fadaf70474b639e3caf50de4d2d33fcf3792c4f1b830dff"
+           "@ec2-52-203-164-61.compute-1.amazonaws.com:5432/daivv73ef4d94k",
+    "heroku cli": "heroku pg:psql postgresql-fitted-04864 --app etudosobrevoce-blog"
+}
+db_local = {
+    "host": "localhost",
+    "database": "blog_data",
+    "user": "postgres",
+    "port": 5432,
+    "password": "123",
+}
 
 
 class Database:
     def __init__(self):
-        self.conn = psycopg2.connect("dbname='blog_data' user='postgres' host='localhost' password='123'")
+        self.conn = psycopg2.connect(
+            host=db_local['host'],
+            database=db_local['database'],
+            user=db_local['user'],
+            password=db_local['password'])
+
         self.cur = self.conn.cursor()
         self.post_title = ""
         self.post_subtitle = ""
