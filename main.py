@@ -1,11 +1,22 @@
 from flask import Flask, render_template, jsonify
 import json
-from bible_api import Bible
+from static.classes.bible_api import Bible
 from datetime import datetime
+from static.classes.db import Database
 
 app = Flask(__name__)
 bible = Bible()
+#db = Database()
 today = datetime.now().day
+
+#db.post_title = "Titulo pelo Pycharm"
+#db.post_subtitle = "Subtítulo pelo Pycharm"
+#db.post_body = "Corpo do post"
+#db.user_id = 1
+#db.comment_id = 1
+#db.exec_insert()
+
+
 bible_num = 1
 bible_text = ""
 
