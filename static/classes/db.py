@@ -1,4 +1,5 @@
 import psycopg2
+import pandas as pd
 
 db_server = {
     "host": "ec2-52-203-164-61.compute-1.amazonaws.com",
@@ -18,7 +19,7 @@ db_local = {
     "password": "123",
 }
 DB_TABLE = "post_table"
-LOCAL_SERVER = 1  # 0 to local and 1 to server
+LOCAL_SERVER = 0  # 0 to local and 1 to server
 
 
 class Database:
@@ -94,3 +95,9 @@ class Database:
             return True
         else:
             return False
+
+    def exec_select_pandas(self):
+        sql_query = "SELECT * FROM public.post_table " \
+                    "ORDER BY post_id ASC "
+        return pd.read_sql(sql_query, self.conn)
+
