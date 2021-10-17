@@ -27,7 +27,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>É tudo sobre Você</h1>
-                            <span class="subheading">Por Jéssica Milone</span>
+                            <span class="subheading"></span>
                             <h6 class="versiculo">{{ bible }}</h6>
                             <h6><a class="external-reference" target="_blank"
                                href="https://www.bibliaonline.com.br/">Versículo diário em bibliaonline.com.br</a>
@@ -43,9 +43,9 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview" style="background-image: url({{ url_for('static', filename='img/posts/motivacao.png')}})">
-                        <a href="post.html">
-                            <h2 class="post-title"> {{ post_title }}</h2>
-                            <h3 class="post-subtitle">{{ post_subtitle }}</h3>
+                        <a href="post0">
+                            <h2 class="post-title"> {{ post_list["0"]["post_title"] }}</h2>
+                            <h3 class="post-subtitle">{{ post_list["0"]["post_subtitle"] }}</h3>
                         </a>
                         <p class="post-meta">
                             Postado por
@@ -57,7 +57,7 @@
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">{{ post_completed["1"]["post_title"] }}</h2></a>
+                        <a href="post1"><h2 class="post-title">{{ post_list["1"]["post_title"] }}</h2></a>
                         <p class="post-meta">
                             Posted by
                             <a href="#!">Start Bootstrap</a>

@@ -3,6 +3,7 @@ import json
 from static.classes.bible_api import Bible
 from datetime import datetime
 from static.classes.db import Database
+from random import randint
 
 app = Flask(__name__)
 bible = Bible()
@@ -36,18 +37,13 @@ def change_bible_text():
 
 
 with open("static/json_data.json", "r") as file:
-    post_completed = json.load(file)
-
-post_title = post_completed["0"]["post_title"]
-post_subtitle = post_completed["0"]["post_subtitle"]
-post_body = post_completed["0"]["post_body"]
+    post_list = json.load(file)
 
 
 @app.route("/")
 def index():
     change_bible_text()
-    return render_template("index.html", bible=bible_text, post_title=post_title,
-                           post_subtitle=post_subtitle, post_body=post_body, post_completed=post_completed)
+    return render_template("index.html", bible=bible_text, post_list=post_list)
 
 
 @app.route("/about")
@@ -60,15 +56,26 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/post")
-def post():
+@app.route("/post<int:post_cod>")
+def post(post_cod):
+    post_title = post_list[f"{post_cod}"]["post_title"]
+    post_subtitle = post_list[f"{post_cod}"]["post_subtitle"]
+    post_body = post_list[f"{post_cod}"]["post_body"]
+
     return render_template("post.html", bible=bible, post_title=post_title,
                            post_subtitle=post_subtitle, post_body=post_body)
 
 
 @app.route("/random")
 def random_get():
-    return jsonify(header="Esse e o titulo", post="Esse e o post completo")
+    post_len = len(post_list) - 1
+    post_cod = randint(0, post_len)
+    post_title = post_list[f"{post_cod}"]["post_title"]
+    post_subtitle = post_list[f"{post_cod}"]["post_subtitle"]
+    post_body = post_list[f"{post_cod}"]["post_body"]
+
+    return render_template("post.html", bible=bible, post_title=post_title,
+                           post_subtitle=post_subtitle, post_body=post_body)
 
 
 if __name__ == "__main__":
