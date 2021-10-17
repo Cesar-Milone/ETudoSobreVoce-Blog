@@ -19,7 +19,7 @@ db_local = {
     "password": "123",
 }
 DB_TABLE = "post_table"
-LOCAL_SERVER = 0  # 0 to local and 1 to server
+LOCAL_SERVER = 1  # 0 to local and 1 to server
 
 
 class Database:
