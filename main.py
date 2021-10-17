@@ -2,21 +2,13 @@ from flask import Flask, render_template, jsonify
 import json
 from static.classes.bible_api import Bible
 from datetime import datetime
-#from static.classes.db import Database
+from static.classes.db import Database
 from random import randint
 
 app = Flask(__name__)
 bible = Bible()
-#db = Database()
+db = Database()
 today = datetime.now().day
-
-#db.post_title = "Titulo pelo Pycharm"
-#db.post_subtitle = "Subtítulo pelo Pycharm"
-#db.post_body = "Corpo do post"
-#db.user_id = 1
-#db.comment_id = 1
-#db.exec_insert()
-
 
 bible_num = 1
 bible_text = ""
@@ -38,12 +30,22 @@ def change_bible_text():
 
 with open("static/json_data.json", "r") as file:
     post_list = json.load(file)
+# Start values to test de DB in server
+for post in post_list:
+    db.post_title = post_list[post]["post_title"]
+    db.post_subtitle = post_list[post]["post_subtitle"]
+    db.post_body = post_list[post]["post_body"]
+    db.user_id = 1
+    db.comment_id = 1
+    db.exec_insert()
+
+data = db.exec_select()
 
 
 @app.route("/")
 def index():
     change_bible_text()
-    return render_template("index.html", bible=bible_text, post_list=post_list)
+    return render_template("index.html", bible=bible_text, post_list=post_list, text_test=data[0][1])
 
 
 @app.route("/about")
