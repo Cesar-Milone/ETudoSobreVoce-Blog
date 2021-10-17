@@ -2,14 +2,14 @@ import psycopg2
 import pandas as pd
 
 db_server = {
-    "host": "ec2-52-203-164-61.compute-1.amazonaws.com",
-    "database": "daivv73ef4d94k",
-    "user": "ltsobhwjihxaha",
+    "host": "ec2-54-164-22-242.compute-1.amazonaws.com",
+    "database": "d955444mit53rq",
+    "user": "uaqgakbkzsgimy",
     "port": 5432,
-    "password": "d8ad4d8bbb6b205a1fadaf70474b639e3caf50de4d2d33fcf3792c4f1b830dff",
-    "uri": "postgres://ltsobhwjihxaha:d8ad4d8bbb6b205a1fadaf70474b639e3caf50de4d2d33fcf3792c4f1b830dff"
-           "@ec2-52-203-164-61.compute-1.amazonaws.com:5432/daivv73ef4d94k",
-    "heroku cli": "heroku pg:psql postgresql-fitted-04864 --app etudosobrevoce-blog",
+    "password": "9203b4c0a73e865cc5b0a6f1a5ea0e13033bdb5faea8e9c4c55c14116906d3de",
+    "uri": "postgres://uaqgakbkzsgimy:9203b4c0a73e865cc5b0a6f1a5ea0e13033bdb5faea8e9"
+           "c4c55c14116906d3de@ec2-54-164-22-242.compute-1.amazonaws.com:5432/d955444mit53rq",
+    "heroku cli": "heroku pg:psql postgresql-adjacent-44014 --app etudosobrevoce-blog",
 }
 db_local = {
     "host": "localhost",
