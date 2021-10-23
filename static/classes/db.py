@@ -19,6 +19,7 @@ db_local = {
     "password": "123",
 }
 DB_TABLE = "post_table"
+DB_USER_TABLE = "user_table"
 LOCAL_SERVER = 1  # 0 to local and 1 to server
 
 
@@ -31,12 +32,20 @@ class Database:
             self.conn = psycopg2.connect(host=db_server['host'], database=db_server['database'],
                                          port=db_server['port'], user=db_server['user'], password=db_server['password'])
 
-        sql_create_table = f"CREATE TABLE IF NOT EXISTS {DB_TABLE} (" \
-                           "post_id serial PRIMARY KEY, post_title CHARACTER VARYING(255) unique NOT NULL, " \
-                           "post_subtitle CHARACTER VARYING(255), post_body CHARACTER VARYING(10000) NOT NULL, " \
-                           "user_id INTEGER);"
+        sql_create_post_table = f"CREATE TABLE IF NOT EXISTS {DB_TABLE} (" \
+                                "post_id serial PRIMARY KEY, post_title CHARACTER VARYING(255) unique NOT NULL, " \
+                                "post_subtitle CHARACTER VARYING(255), post_body CHARACTER VARYING(10000) NOT NULL, " \
+                                "user_id INTEGER);"
+        sql_create_user_table = f"CREATE TABLE IF NOT EXISTS {DB_USER_TABLE} (" \
+                                "user_id serial PRIMARY KEY, fname CHARACTER VARYING(64) NOT NULL, " \
+                                "lname CHARACTER VARYING(64), password_hash CHARACTER VARYING(255) NOT NULL, " \
+                                "password_salt CHARACTER VARYING(255) NOT NULL, cpf INTEGER," \
+                                "social_media_url CHARACTER VARYING(255), picture_url CHARACTER VARYING(255)," \
+                                "birthday_date date);"
         self.cur = self.conn.cursor()
-        self.cur.execute(sql_create_table)
+        self.cur.execute(sql_create_post_table)
+        self.conn.commit()
+        self.cur.execute(sql_create_user_table)
         self.conn.commit()
         self.post_title = ""
         self.post_subtitle = ""
@@ -72,8 +81,9 @@ class Database:
         else:
             return False
 
-    def exec_delete(self, post_id):
+    def exec_delete(self, post_id, table):
         cur = self.conn.cursor()
+        table = ""
         if post_id != 0:
             sql_query = f"DELETE FROM public.post_table " \
                         f"WHERE post_id = {post_id}"
@@ -100,4 +110,3 @@ class Database:
         sql_query = "SELECT * FROM public.post_table " \
                     "ORDER BY post_id ASC "
         return pd.read_sql(sql_query, self.conn)
-

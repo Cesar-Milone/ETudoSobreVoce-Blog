@@ -1,14 +1,12 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import json
 from static.classes.bible_api import Bible
 from datetime import datetime
 from static.classes.db import Database
 from random import randint
-import pandas as pd
 import logging
-
-logging.info("Startin application")
-print("Startin application")
+from flask_wtf import FlaskForm
+from wtforms import StringField
 
 app = Flask(__name__)
 bible = Bible()
@@ -19,9 +17,13 @@ bible_num = 1
 bible_text = ""
 
 
+class LoginForm(FlaskForm):
+    email = StringField('Email')
+    password = StringField('Password')
+
+
 def change_bible_text():
     global today, bible_num, bible_text
-    logging.info("bible webscrapping")
     new_day = datetime.now().day
     if today != new_day:
         bible.get_versivulo()
@@ -33,7 +35,7 @@ def change_bible_text():
         bible_num = 1
         bible_text = bible.text2
 
-logging.info("Open json")
+
 with open("static/json_data.json", "r") as file:
     logging.info("Json opened")
     post_list = json.load(file)
@@ -47,10 +49,8 @@ for post in post_list:
     db.user_id = 1
     db.comment_id = 1
     db.exec_insert()
-logging.info("Finish DB configuration")
 post_list_db = db.exec_select()
 post_pandas = db.exec_select_pandas()
-logging.info("First entering in index.html")
 
 
 @app.route("/")
@@ -67,6 +67,17 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+@app.route("/login_page")
+def login_page():
+    return render_template("login.html")
+
+
+@app.route("/login", methods=['POST'])
+def login():
+    data = request.form
+    return render_template("login.html")
 
 
 @app.route("/post<int:post_cod>")
