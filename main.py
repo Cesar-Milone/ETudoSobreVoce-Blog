@@ -5,8 +5,6 @@ from datetime import datetime
 from static.classes.db import Database
 from random import randint
 import logging
-from flask_wtf import FlaskForm
-from wtforms import StringField
 
 app = Flask(__name__)
 bible = Bible()
@@ -15,11 +13,6 @@ today = datetime.now().day
 
 bible_num = 1
 bible_text = ""
-
-
-class LoginForm(FlaskForm):
-    email = StringField('Email')
-    password = StringField('Password')
 
 
 def change_bible_text():
@@ -37,7 +30,6 @@ def change_bible_text():
 
 
 with open("static/json_data.json", "r") as file:
-    logging.info("Json opened")
     post_list = json.load(file)
 
 # Start values to test de DB in server
@@ -74,10 +66,24 @@ def login_page():
     return render_template("login.html")
 
 
+@app.route("/register_page")
+def register_page():
+    return render_template("register.html")
+
+
 @app.route("/login", methods=['POST'])
 def login():
     data = request.form
-    return render_template("login.html")
+    print(f"Dados {data}")
+    return render_template("index.html", bible=bible_text, post_list=post_pandas)
+
+
+@app.route("/register", methods=['POST'])
+def register():
+    data = request.form
+
+    print(f"Dados {data}")
+    return render_template("index.html", bible=bible_text, post_list=post_pandas)
 
 
 @app.route("/post<int:post_cod>")
