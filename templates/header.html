@@ -17,9 +17,17 @@
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="random">Post</a></li>
+                    {% if user.email == 'cesar_milone@hotmail.com' or user.email == 'jeholiver89@gmail.com'%}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="new_post_page">Post</a></li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contato</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login_page">Login</a></li>
+                    {% if user.validate == False %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login_page">Login</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logoff">Logoff</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 user-name" href="logoff">{{ user.name }}</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

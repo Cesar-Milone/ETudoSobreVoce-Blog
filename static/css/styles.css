@@ -1,3 +1,32 @@
 .form-text{
     color: black;
 }
+.user-name{
+    color: blue;
+}
+.form-post-container{
+    background: white;
+    width: 90%;
+    margin: 0 auto;
+    padding: 3rem 3rem;
+    opacity: .75;
+    border-radius: 6px;
+}
+.form-post{
+}
+.form-post-object{
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 6px;
+}
+textarea.form-post-object{
+    height: 15rem;
+}
+
+button.form-post-object{
+  transition: 0.3s;
+}
+button:hover.form-post-object{
+    opacity: 0.5;
+}

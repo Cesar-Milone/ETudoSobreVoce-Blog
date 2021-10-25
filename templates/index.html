@@ -43,16 +43,12 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
-                    {% for n in range(0, 3) %}
+                    {% for n in range(post_list.post_id.count()-1, -1, -1) %}
                         <div class="post-preview" style="background-image: url({{ url_for('static', filename='img/posts/default-post.jpg')}}")>
                             <a href="post1">
                                 <h2 class="post-title">{{ post_list.post_title[n] }}</h2>
                                 <h3 class="post-subtitle">{{ post_list.post_subtitle[n] }}</h3>
                             </a>
-                            <p class="post-meta">
-                            Postado por
-                            <a href="#!">Cod {{ n }}</a>
-                            Jéssica Milone
                         </p>
                         </div>
                         <!-- Divider-->

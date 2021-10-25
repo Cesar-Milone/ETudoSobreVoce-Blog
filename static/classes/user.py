@@ -1,23 +1,25 @@
-
 class User:
-    def __init__(self, user_id, fname, lname, email, password_hash, password_salt, cpf, social_media_id,
-                 picrue_url, birthday_date):
-        self.user_id = user_id
-        self.fname = fname
-        self.lname = lname
+    def __init__(self, name="Nome", email="generic@generic.com"):
+        self.user_id = 0
+        self.name = name.title()
         self.email = email
-        self.password_salt = password_salt
-        self.password_hash = password_hash
-        self.cpf = cpf
-        self.social_media_id = social_media_id
-        self.picture_url = picrue_url
-        self.birthday_date = birthday_date
+        self.password_hash = ""
+        self.social_media_id = ""
+        self.picture_url = ""
+        self.birthday_date = "01/01/2001"
+        self.admin = False
+        self.validate = False
 
-    def insert_user_db(self):
-        sql = f"INSERT INTO public.user_table(" \
-              f"user_id, fname, lname, password_hash, password_salt, cpf, social_media_url, " \
-              f"picture_url, birthday_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
-        return True
+    def logoff(self):
+        self.user_id = 0
+        self.name = ""
+        self.email = ""
+        self.password_hash = ""
+        self.social_media_id = ""
+        self.picture_url = ""
+        self.birthday_date = "01/01/2001"
+        self.admin = False
+        self.validate = False
 
 
 
