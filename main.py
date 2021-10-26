@@ -86,7 +86,7 @@ def login():
         user.validate = True
         if user.user_id == 1:
             user.admin = True
-    return render_template("index.html", user=user, bible=bible_text, post_list=post_pandas)
+    return index()
 
 
 @app.route("/register", methods=['POST'])
@@ -101,13 +101,13 @@ def register():
             salt_length=8
         )
     db.exec_insert_user(user)
-    return render_template("index.html", user=user, bible=bible_text, post_list=post_pandas)
+    return index()
 
 
 @app.route("/logoff")
 def logoff():
     user.logoff()
-    return render_template("index.html", user=user, bible=bible_text, post_list=post_pandas)
+    return index()
 
 
 @app.route("/post<int:post_cod>")
@@ -134,7 +134,7 @@ def new_post():
     db.post_body = data["body"]
     db.exec_insert()
     post_pandas = db.exec_select_pandas()
-    return render_template("index.html", user=user, bible=bible_text, post_list=post_pandas)
+    return index()
 
 
 @app.route("/random")
