@@ -139,7 +139,10 @@ def new_post():
 
 @app.route("/random")
 def random_get():
-    return render_template("post.html", user=user, bible=bible)
+    random_num = randint(0, post_pandas.user_id.count() - 1)
+    json_str = post_pandas.iloc[random_num].to_json(date_format="epoch")
+    print(json_str)
+    return jsonify(json_str)
 
 
 if __name__ == "__main__":

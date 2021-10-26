@@ -45,7 +45,7 @@
                     <!-- Post preview-->
                     {% for n in range(post_list.post_id.count()-1, -1, -1) %}
                         <div class="post-preview" style="background-image: url({{ url_for('static', filename='img/posts/default-post.jpg')}}")>
-                            <a href="post1">
+                            <a href="post{{n}}">
                                 <h2 class="post-title">{{ post_list.post_title[n] }}</h2>
                                 <h3 class="post-subtitle">{{ post_list.post_subtitle[n] }}</h3>
                             </a>
