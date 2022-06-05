@@ -35,7 +35,7 @@ class Database:
 
         sql_create_post_table = f"CREATE TABLE IF NOT EXISTS {DB_TABLE} (" \
                                 "post_id serial PRIMARY KEY, post_title CHARACTER VARYING(255) unique NOT NULL, " \
-                                "post_subtitle CHARACTER VARYING(255), post_body CHARACTER VARYING(10000) NOT NULL, " \
+                                "post_subtitle CHARACTER VARYING(255), post_body CHARACTER VARYING(100000) NOT NULL, " \
                                 "user_id INTEGER);"
         sql_create_user_table = f"CREATE TABLE IF NOT EXISTS {DB_USER_TABLE} (" \
                                 "user_id serial PRIMARY KEY, name CHARACTER VARYING(255) NOT NULL, " \
