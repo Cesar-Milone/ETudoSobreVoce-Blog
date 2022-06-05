@@ -43,12 +43,13 @@ class Database:
                                 ", social_media_id CHARACTER VARYING(255), picture_url CHARACTER VARYING(255)," \
                                 "birthday_date date);"
 
-        sql_delete_post_table = f"DROP TABLE {DB_TABLE};"
-
         self.cur = self.conn.cursor()
 
+        '''
+        sql_delete_post_table = f"DROP TABLE {DB_TABLE};
         self.cur.execute(sql_delete_post_table)
         self.conn.commit()
+        '''
 
         self.cur.execute(sql_create_post_table)
         self.conn.commit()
