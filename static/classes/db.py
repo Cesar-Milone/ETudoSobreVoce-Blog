@@ -42,6 +42,7 @@ class Database:
                                 "password_hash CHARACTER VARYING(255) NOT NULL, email CHARACTER VARYING(255) NOT NULL" \
                                 ", social_media_id CHARACTER VARYING(255), picture_url CHARACTER VARYING(255)," \
                                 "birthday_date date);"
+
         sql_delete_post_table = f"DROP TABLE {DB_TABLE};"
 
         self.cur = self.conn.cursor()
