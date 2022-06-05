@@ -120,9 +120,6 @@ def post(post_cod):
                            post_subtitle=post_subtitle, post_body=post_body)
 
 
-'''Teste de Comentário'''
-
-
 @app.route("/new_post_page")
 def new_post_page():
     return render_template("new_post.html", user=user, bible=bible)
